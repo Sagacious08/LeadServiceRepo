@@ -1,11 +1,8 @@
 package com.boarding.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Date;
 
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.stereotype.Component;
@@ -56,7 +53,7 @@ public class LeadValidator implements Validator{
 								+ "The last name can only end with an a-z (ignore case) character");
 			}
 			if (lead.getEmail()!=null && !emailValidator.isValid(lead.getEmail())) {
-		         errors.rejectValue("email", "NotValid.User.email");
+		         errors.rejectValue("email", "Email is unvalid please enter valid email.");
 		     }
 			String phonevalidation = "(0/91)?[6-9][0-9]{9}";
 			if (lead.getMobileNumber() !=null && !lead.getMobileNumber().matches(phonevalidation)) {
