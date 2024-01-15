@@ -10,6 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="leads")
@@ -30,12 +31,14 @@ public class Lead {
     @Column(nullable = false)
     private String mobileNumber;
 
+    @JsonProperty(value = "Gender")
     @Column(nullable = false)
     private String gender;
 
     @Column(nullable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
+    @JsonProperty(value = "DOB")
     private Date dob;
 
     @Column(nullable = false, unique = true)
