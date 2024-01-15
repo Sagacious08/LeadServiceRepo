@@ -31,8 +31,7 @@ public class LeadService {
 			String [] arr= {errors.getFieldError().getCode()};
 			return getResponse(arr,"E10010",jsonObject);
 		}
-		Optional<Lead> leadOp=leadRespository.findById(lead.getLeadId());
-		if(!leadOp.isPresent()) {
+		if(!leadRespository.existsById(lead.getLeadId())) {
 			leadRespository.save(lead);
 			jsonObject.put("status", "success");
 			jsonObject.put("data", "Created Leads Successfully");
