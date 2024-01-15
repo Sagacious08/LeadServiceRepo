@@ -7,6 +7,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -49,7 +50,7 @@ public class LeadControllerTest {
         lead.setFirstName("Sagar");
         lead.setLastName("Tawate");
         lead.setEmail("sagar@gmail.com");
-        lead.setDob(new Date());
+        lead.setDob(LocalDate.now());
         lead.setGender("Male");
         lead.setMobileNumber("9359119778");
         JSONObject json = new JSONObject();
@@ -75,7 +76,7 @@ public class LeadControllerTest {
         lead.setFirstName("Sagar");
         lead.setLastName("Tawate");
         lead.setEmail("sagar@gmail.com");
-        lead.setDob(new Date());
+        lead.setDob(LocalDate.now());
         lead.setGender("BLOB");
         lead.setMobileNumber("9359119778");
         BindingResult errors = mock(BindingResult.class);
@@ -108,7 +109,7 @@ public class LeadControllerTest {
         lead.setFirstName("Sagar");
         lead.setLastName("Tawate");
         lead.setEmail("sagar@gmail.com");
-        lead.setDob(new Date());
+        lead.setDob(LocalDate.now());
         lead.setGender("Male");
         lead.setMobileNumber("9359119778");
         

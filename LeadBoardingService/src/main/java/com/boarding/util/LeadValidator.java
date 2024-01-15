@@ -2,6 +2,9 @@ package com.boarding.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 import org.apache.commons.validator.routines.EmailValidator;
@@ -71,22 +74,20 @@ public class LeadValidator implements Validator{
 			
 		}
 	}
-	public boolean isValid(Date value) {
-        if (value == null) {
-            return false;
-        }
+	public boolean isValid(LocalDate value) {
+	    if (value == null) {
+	        return false;
+	    }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        dateFormat.setLenient(false);
+	    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        try {
-            String formattedDate = dateFormat.format(value);
-            Date parsedDate = dateFormat.parse(formattedDate);
-            return formattedDate.equals(dateFormat.format(parsedDate));
-        } catch (ParseException e) {
-        	e.printStackTrace();//Not good practice
-            return false;
-        }
-    }
-
+	    try {
+	        String formattedDate = value.format(dateFormatter);
+	        LocalDate parsedDate = LocalDate.parse(formattedDate, dateFormatter);
+	        return formattedDate.equals(parsedDate.format(dateFormatter));
+	    } catch (DateTimeParseException e) {
+	        e.printStackTrace(); // Not good practice
+	        return false;
+	    }
+	}
 }

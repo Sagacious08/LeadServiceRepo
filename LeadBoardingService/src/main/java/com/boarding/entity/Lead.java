@@ -1,15 +1,14 @@
 package com.boarding.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -31,19 +30,19 @@ public class Lead {
     @Column(nullable = false)
     private String mobileNumber;
 
-    @JsonProperty(value = "Gender")
+    @JsonProperty("Gender")
     @Column(nullable = false)
     private String gender;
 
     @Column(nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    @Temporal(TemporalType.DATE)
-    @JsonProperty(value = "DOB")
-    private Date dob;
+    @JsonFormat(shape =JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
+    @JsonProperty("DOB")
+    private LocalDate dob;
 
     @Column(nullable = false, unique = true)
     private String email;
     
+    @JsonIgnore
     private transient boolean flag;
 
 	public Integer getLeadId() {
@@ -94,11 +93,11 @@ public class Lead {
 		this.gender = gender;
 	}
 
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 
@@ -119,7 +118,7 @@ public class Lead {
 	}
 
 	public Lead(Integer leadId, String firstName, String middleName, String lastName, String mobileNumber,
-			String gender, Date dob, String email, boolean flag) {
+			String gender, LocalDate dob, String email, boolean flag) {
 		super();
 		this.leadId = leadId;
 		this.firstName = firstName;

@@ -7,6 +7,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -51,7 +52,7 @@ public class LeadServiceTest {
         lead.setFirstName("Sagar");
         lead.setLastName("Tawate");
         lead.setEmail("sagar@gmail.com");
-        lead.setDob(new Date());
+        lead.setDob(LocalDate.now());
         lead.setGender("Male");
         lead.setMobileNumber("9359119778");
         
@@ -75,7 +76,7 @@ public class LeadServiceTest {
         lead.setFirstName("Sagar");
         lead.setLastName("Tawate");
         lead.setEmail("sagar@gmail.com");
-        lead.setDob(new Date());
+        lead.setDob(LocalDate.now());
         lead.setGender("Male");
         lead.setMobileNumber("9359119778");
         
@@ -102,7 +103,7 @@ public class LeadServiceTest {
         lead.setFirstName("Sagar");
         lead.setLastName("Tawate");
         lead.setEmail("sagar@gmail.com");
-        lead.setDob(new Date());
+        lead.setDob(LocalDate.now());
         lead.setGender("Male");
         lead.setMobileNumber("9359119778");
         List<Lead> leads = new ArrayList<>();
