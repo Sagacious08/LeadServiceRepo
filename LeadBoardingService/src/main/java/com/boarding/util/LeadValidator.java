@@ -53,7 +53,7 @@ public class LeadValidator implements Validator{
 								+ "The last name can only end with an a-z (ignore case) character");
 			}
 			if (lead.getEmail()!=null && !emailValidator.isValid(lead.getEmail())) {
-		         errors.rejectValue("email", "Email is unvalid please enter valid email.");
+		         errors.rejectValue("email", "Email is invalid please enter valid email.");
 		     }
 			String phonevalidation = "(0/91)?[6-9][0-9]{9}";
 			if (lead.getMobileNumber() !=null && !lead.getMobileNumber().matches(phonevalidation)) {
